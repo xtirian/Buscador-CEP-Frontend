@@ -11,6 +11,23 @@
   overflow-y: scroll;
 }
 
+.error_container{
+  font-size: 1.6rem;
+
+  background-color: #E9E9E9;
+  width: 50%;  
+  padding: 20px;
+  border-radius: 20px;
+
+  img{
+    width: 100%;
+  }
+
+  span{
+    font-weight: bold;
+  }
+}
+
 .address_container {
   font-size: 1.6rem;
 

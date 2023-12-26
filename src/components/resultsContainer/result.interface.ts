@@ -1,4 +1,5 @@
 export default interface Result {
+  erro: boolean;
   bairro: string;
   cep: string;
   complemento: string;
