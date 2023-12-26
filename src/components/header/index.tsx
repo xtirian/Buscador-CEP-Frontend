@@ -1,4 +1,3 @@
-import React from 'react'
 import './style.scss'
 import { FaMapLocationDot } from "react-icons/fa6";
 

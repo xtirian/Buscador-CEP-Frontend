@@ -1,4 +1,3 @@
-import React from "react";
 import "../forms-styles.scss";
 import { HandleHTTPRequest } from "../../services/handleHTTP";
 
