@@ -1,9 +1,36 @@
 import React from 'react'
 import '../forms-styles.scss'
+import { HandleHTTPRequest } from '../../services/handleHTTP';
 
-const FormAddress = () => {
+interface data {
+  getResults: Function;
+}
+
+const FormAddress = ({ getResults }: data) => {
+
+  const passResults = async (UF: string, cidade: string, rua: string) => {
+
+    const result = await HandleHTTPRequest.getCEP(UF,cidade,rua);
+
+    getResults(result);
+
+    return;
+  };
+
+
+
   return (
-    <form className="GetForm ">
+    <form className="GetForm " onSubmit={async (e) => {
+      e.preventDefault();
+
+      const UF = e.target[0].value;
+      const cidade = e.target[1].value;
+      const rua = e.target[2].value;
+
+      passResults(UF, cidade, rua);
+      
+    }}
+    >
               <label>
                 <input
                   type="text"

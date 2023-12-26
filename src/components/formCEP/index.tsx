@@ -1,8 +1,12 @@
 import React from "react";
 import "../forms-styles.scss";
+import { HandleHTTPRequest } from "../../services/handleHTTP";
 
-const FormCep = () => {
-  
+interface data {
+  getResults: Function;
+}
+
+const FormCep = ({ getResults }: data) => {
   const cepFormPattern = (value: string) => {
     if (value.length === 8) {
       const valueArr = value.split("");
@@ -18,15 +22,32 @@ const FormCep = () => {
     return "";
   };
 
+  const passResults = async (cep: string) => {
+    const result = await HandleHTTPRequest.getAddress(cep);
+
+    getResults([result]);
+
+    return;
+  };
+
   return (
-    <form action="" className="GetForm CepForm">
+    <form
+      className="GetForm CepForm"
+      onSubmit={async (e) => {
+        e.preventDefault();
+
+        const cep = e.target[0].value;
+
+        passResults(cep);
+      }}
+    >
       <label>
         <input
           type="text"
           inputMode="numeric"
-          pattern="[0-9]*"
           placeholder=""
           maxLength={8}
+          minLength={8}
           onChange={(e) => {
             let currentValue = cepFormPattern(e.currentTarget.value);
 
@@ -38,6 +59,8 @@ const FormCep = () => {
         />
         <span>Insira o CEP</span>
       </label>
+
+      <button type="submit">Pesquisar</button>
     </form>
   );
 };

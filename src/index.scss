@@ -24,6 +24,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #060326;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 h1 {
@@ -63,7 +68,6 @@ button:focus-visible {
   }
 }
 
-label{
-
+label {
   cursor: pointer;
 }
